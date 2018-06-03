@@ -8,13 +8,20 @@ using System.Web;
 namespace Garage.Models
 {
     [Table("Orders", Schema = "Garage")]
-    public class Order
+    public class Order : AuditClass
     {
-        [Key]
-        public Int32 Id { get; set; }
+        public string Name { get; set; }
 
-        public DateTime DtCreate { get; set; }
+        public DateTime? PlanDate { get; set; }
 
         public string Comment { get; set; }
+
+        [ForeignKey("IdOrder")]
+        public List<OrderItem> OrderItems { get; set; }
+
+        public Order()
+        {
+            OrderItems = new List<OrderItem>();
+        }
     }
 }

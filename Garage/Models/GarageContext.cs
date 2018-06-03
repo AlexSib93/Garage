@@ -10,6 +10,7 @@ namespace Garage.Models
     public class GarageContext : DbContext
     {
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         public GarageContext() : base(nameOrConnectionString: "GarageContext") { }
 
